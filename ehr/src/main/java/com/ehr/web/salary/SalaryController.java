@@ -18,7 +18,7 @@ public class SalaryController {
 
 	@Autowired
 	private SalaryService salaryService;
-
+	
 	@GetMapping("/salary")
 	public String salary(@RequestParam Map<String, Object> map, Model model) {
 		
@@ -72,12 +72,5 @@ public class SalaryController {
 
 		return json.toString();
 	}
-	
-	@GetMapping("/salary3")
-	public String salary3() {
-
-		return "/salary3";
-	}
-
 
 }

@@ -13,6 +13,7 @@ ${sessionScope.ename }
 ${list}
 <button onclick="location.href='./join'">사원등록</button>
 <button onclick="location.href='./salary?eno=${sessionScope.eno}'">개인월급여내역</button>
+<button onclick="location.href='./contract?eno=${sessionScope.eno}'">연봉계약서</button>
 
 </body>
 </html>
