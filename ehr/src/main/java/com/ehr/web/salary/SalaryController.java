@@ -1,5 +1,7 @@
 package com.ehr.web.salary;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import org.json.JSONObject;
@@ -19,12 +21,26 @@ public class SalaryController {
 
 	@GetMapping("/salary")
 	public String salary(@RequestParam Map<String, Object> map, Model model) {
+		
+		if (map.get("sdate") == null) {
+			String sdate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM"));
+			System.out.println(sdate);
+			map.put("sdate", sdate);
 
-		Map<String, Object> elist = salaryService.elist(map);
-		model.addAttribute("elist", elist);
+			Map<String, Object> elist = salaryService.elist(map);
+			model.addAttribute("elist", elist);
+			//날짜 생성하기
+//			LocalDate date = LocalDate.now();
+//			System.out.println(date);
+//			SimpleDateFormat simple = new SimpleDateFormat("YYYY-MM");
+//			String sdate = simple.format(date); 
+//			System.out.println(sdate);
+			 
+		} 
 
-		Map<String, Object> slist = salaryService.slist(map);
-		model.addAttribute("slist", slist);
+			Map<String, Object> slist = salaryService.slist(map);
+			model.addAttribute("slist", slist);
+			System.out.println(map);
 
 		return "/salary";
 	}
@@ -48,7 +64,7 @@ public class SalaryController {
 
 		System.out.println(map);
 		Map<String, Object> searchSal = salaryService.searchSal(map);
-		Map<String, Object> searchSal2 = salaryService.searchSal(map);
+		Map<String, Object> searchSal2 = salaryService.searchSal2(map);
 
 		JSONObject json = new JSONObject();
 		json.put("elist", searchSal);
@@ -56,5 +72,12 @@ public class SalaryController {
 
 		return json.toString();
 	}
+	
+	@GetMapping("/salary3")
+	public String salary3() {
+
+		return "/salary3";
+	}
+
 
 }

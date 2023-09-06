@@ -5,19 +5,19 @@
 <mapper namespace="com.ehr.web.salary.SalaryDAO">
 
 	<select id="elist" parameterType="Map" resultType="Map">
-		SELECT * FROM employee WHERE eno=#{eno} AND sdate=#{sdate}
-	</select>
+		SELECT * FROM employee e JOIN salary s ON e.eno=s.eno WHERE DATE_FORMAT(s.sdate, '%Y-%m')=#{sdate};
+		</select>
 	
 	<select id="slist" parameterType="Map" resultType="Map">
-		SELECT * FROM salary WHERE eno=#{eno} AND sdate=#{sdate}
+		SELECT * FROM salary s JOIN employee e ON e.eno=s.eno WHERE DATE_FORMAT(s.sdate, '%Y-%m')=#{sdate};
 	</select>
 	
 	<select id="searchSal" parameterType="Map" resultType="Map">
-		SELECT * FROM employee WHERE eno=#{eno} AND eno IN (SELECT eno FROM salary WHERE sdate=#{sdate});
+		SELECT * FROM employee e JOIN salary s ON e.eno=s.eno WHERE DATE_FORMAT(s.sdate, '%Y-%m')=#{sdate} AND e.eno=#{eno};
 	</select>
 	
 	<select id="searchSal2" parameterType="Map" resultType="Map">
-		SELECT * FROM salary WHERE eno=#{eno} AND sdate=#{sdate}
+		SELECT * FROM salary s JOIN employee e ON e.eno=s.eno WHERE DATE_FORMAT(s.sdate, '%Y-%m')=#{sdate} AND e.eno=#{eno};
 	</select>
 	
 	
