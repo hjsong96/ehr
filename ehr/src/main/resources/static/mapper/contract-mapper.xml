@@ -7,7 +7,19 @@
 	<select id="clist" parameterType="Map" resultType="Map">
 		SELECT * FROM contract WHERE eno=#{eno};
 	</select>
-
+	
+	<select id="elist" parameterType="Map" resultType="Map">
+		SELECT * FROM employee e JOIN contract c ON e.eno=c.eno WHERE e.eno=#{eno} AND cno=#{cno} AND cstrdate=#{cstrdate};
+	</select>
+	
+	<select id="clist2" parameterType="Map" resultType="Map">
+		SELECT * FROM contract c JOIN employee e ON e.eno=c.eno WHERE e.eno=#{eno} AND cno=#{cno} AND cstrdate=#{cstrdate};
+	</select>
+	
+	<update id="aggrCheck" parameterType="Map">
+		UPDATE contract SET cagree=#{agree}
+	</update>
+	
 	
 	
 </mapper>

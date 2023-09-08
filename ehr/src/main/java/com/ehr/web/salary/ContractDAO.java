@@ -8,4 +8,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ContractDAO {
 	List<Map<String, Object>> clist(Map<String, Object> map);
+
+	Map<String, Object> elist(Map<String, Object> map);
+
+	Map<String, Object> clist2(Map<String, Object> map);
+
+	int aggrCheck(Map<String, Object> map);
 }
