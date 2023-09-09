@@ -17,7 +17,8 @@
 	</select>
 	
 	<update id="aggrCheck" parameterType="Map">
-		UPDATE contract SET cagree=#{agree}
+		UPDATE contract SET cagree=#{agree2}, cstrdate=#{acstrdate2}, cenddate=#{acenddate2}, eno=#{eno}, cagreedate=NOW()
+		WHERE cno=#{acno2};
 	</update>
 	
 	

@@ -26,11 +26,13 @@
 	}
 
 	$(function(){
-/* 		$(".btn-close").click(function(){
-            $(".detail-head2").remove(); // 기존의 내용을 비워줍니다.
-		}) */
-		
+		let clickedOnce = false;
 		 $(".xi-file-text-o").click(function(){
+			 
+ 	        $(document).on("click", ".btn-close", function() {
+                $("#submit button, .agree2, #acno2, #acstrdate2, #acenddate2").remove();
+        	}); //.btn-close 끝
+			 
 	        let cno = $(this).parents("tr").find(".cno").text();
 	        let eno = $(".eno").val();
 	        let cstrdate = $(this).parents("tr").find(".cstrdate").text();
@@ -59,42 +61,75 @@
 						$(".esalary").text(formatNumber(data.elist.esalary) + '원');
 						$(".cstrdate2").text(cstrdate);
 						$(".cenddate2").text(cenddate);
-						
-		                let form = $("<form></form>");
-						form.attr("action", "./contrack");
-						form.attr("method", "post");
-						
-						let input = $("<input>");
-						input.attr("name", "acno");
-						input.attr("class","acno");
-						input.val(acno);
-
-						let input2 = $("<input>");
-						input2.attr("name", "acstrdate");
-						input2.attr("class","acstrdate");
-						input2.val(acstrdate);
-						
-						let input3 = $("<input>");
-						input3.attr("name", "acenddate");
-						input3.attr("class","acenddate");
-						input3.val(acenddate);
-						
-						$("#cno").append(input);
-						$("#cstrdate").append(input2);
-						$("#cenddate").append(input3);
 
 						let button = $("<button></button>");
 						button.text("제출하기");
 						button.attr("type", "submit");
 						button.attr("class", "submit");
-						$("#submit").append(button);
-						$(".detail-head2").append(form);
+	                    $("#submit").append(button);
+						
 		                $("#exampleModal").modal("show");
 		                
-		                $(".btn-close").click(function() {
-		                    $("#cno input, #cstrdate input, #cenddate input, #submit button").remove();
-		                });
+
+	                    if(!clickedOnce) {  // clickedOnce가 false인 경우에만 버튼 생성
+			            	$(document).on("click", ".submit", function(){
+			            		//가상 form 만들어서 전송하기
+			            		let agreeValue = $("input[name='agree']:checked").val();
+			            		alert(agreeValue);
+			            		
+			            	    // 선택된 동의 값 확인
+			            	    if (agreeValue !== undefined) {
+			            	        let form = $('<form></form>');
+			            	        form.attr("action", "./contrack");
+			            	        form.attr("method", "post");
+
+			            	        // 동의 값을 추가
+			            	        let agreeInput = $("<input>");
+			            	        agreeInput.attr("name", "agree2");
+			            	        agreeInput.attr("class", "agree2");
+			            	        agreeInput.val(agreeValue);
+			            	        form.append(agreeInput);
+
+			            	        // acno, acstrdate, acenddate 값 추가
+			            	        let input1 = $("<input>");
+			            	        input1.attr("name", "acno2");
+			            	        input1.attr("id", "acno2");
+			            	        input1.val(acno);
+			            	        form.append(input1);
+
+			            	        let input2 = $("<input>");
+			            	        input2.attr("name", "acstrdate2");
+			            	        input2.attr("id", "acstrdate2");
+			            	        input2.val(acstrdate);
+			            	        form.append(input2);
+
+			            	        let input3 = $("<input>");
+			            	        input3.attr("name", "acenddate2");
+			            	        input3.attr("id", "acenddate2");
+			            	        input3.val(acenddate);
+			            	        form.append(input3);
+
+			            	        form.appendTo(".detail-head2");
+			            	        
+				            	    $(document).on("click", ".submit", function() {
+					                    $("#submit button, .agree2, #acno2, #acstrdate2, #acenddate2").remove();
+						            	}); 
+			            	        
+			            	        $(document).on("click", ".btn-close", function() {
+					                    $("#submit button, .agree2, #acno2, #acstrdate2, #acenddate2").remove();
+					            	}); //.btn-close 끝
+			            	        
+			            	        form.submit();
+				                    clickedOnce = true;
+			            		} //if 끝 
+			            	    else {
+			            	        alert("동의 또는 비동의를 선택하세요.");
+			            	    } //else 끝
+			            	}); //submit 클릭 시 끝
+		                } //클릭 false 체크 끝
+		            	   
 					}, //success 끝
+					
 					error:function(error){
 						alert("에러가 발생했습니다.");} //error 끝
 				}); //ajax 끝
@@ -181,10 +216,10 @@
 								</tr>
 								</table>
 								</div>
-						<div class="detail-head2">제 3조. 동의여부</div>
-						<input type="radio" value="1" name="agree" checked>동의
-						<input type="radio" value="0" name="agree">비동의
+						<div class="detail-head">제 3조. 동의여부</div>
 						<div class="detail-head2">
+		            		<input type="radio" value="1" name="agree" checked class="agree">동의
+           				 	<input type="radio" value="0" name="agree" class="disagree">비동의
 						<div id="cno"></div>
 						<div id="cstrdate"></div>
 						<div id="cenddate"></div>
@@ -201,7 +236,5 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
    <script src="js/scripts.js"></script>
    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-	
-	
 </body>
 </html>
