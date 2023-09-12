@@ -28,5 +28,9 @@ public class ContractService {
 		return contractDAO.aggrCheck(map);
 	}
 
+	public Map<String, Object> slist(Map<String, Object> map) {
+		return contractDAO.slist(map);
+	}
+
 
 }

@@ -20,5 +20,9 @@
 		SELECT * FROM salary s JOIN employee e ON e.eno=s.eno WHERE DATE_FORMAT(s.sdate, '%Y-%m')=#{sdate} AND e.eno=#{eno};
 	</select>
 	
+	<select id="list" parameterType="Map" resultType="Map">
+		SELECT * FROM salary s JOIN employee e ON e.eno=s.eno WHERE s.eno=#{eno};
+	</select>
+	
 	
 </mapper>

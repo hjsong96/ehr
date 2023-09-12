@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Salary</title>
 <link href="./resources/css/salary.css" rel="stylesheet" />
+<link href="./resources/css/menu.css" rel="stylesheet" />
 <script src="./js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
 window.onload = function() {
@@ -39,15 +40,15 @@ $(function() {
 	 				function formatNumber(number) {
                     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
-	                $(".ebasesal").text(formatNumber(data.elist.ebasesal) + '원');
-	                $(".eeat").text(formatNumber(data.elist.eeat) + '원');
-	                $(".esalary").text(formatNumber(data.elist.esalary) + '원');
+	                $(".sbasesal").text(formatNumber(data.slist.sbasesal) + '원');
+	                $(".seat").text(formatNumber(data.slist.seat) + '원');
+	                $(".ssalary").text(formatNumber(data.slist.ssalary) + '원');
 	                $(".snation").text(formatNumber(data.slist.snation) + '원');
 	                $(".shealth").text(formatNumber(data.slist.shealth) + '원');
 	                $(".scare").text(formatNumber(data.slist.scare) + '원');
 	                $(".shire").text(formatNumber(data.slist.shire) + '원');
 	                $(".stake").text(formatNumber(data.slist.stake) + '원');
-	                $(".esalary").text(formatNumber(data.elist.esalary) + '원');
+	                $(".ssalary").text(formatNumber(data.slist.ssalary) + '원');
 	                $(".stake").text(formatNumber(data.slist.stake) + '원');
 	                $(".sreal").text(formatNumber(data.slist.sreal) + '원')
 	 			},
@@ -65,6 +66,8 @@ function printPage(){
 </script>
 </head>
 <body>
+<%@ include file="menu.jsp" %>
+	<div class="total-content">
 	<h1>salary</h1>
 		<form action="./salary" method="get">
 			<input name="eno" class="eno" value="${sessionScope.eno}"> 
@@ -85,11 +88,11 @@ function printPage(){
 			</tr>
 			<tr>
 				<td colspan="2">기본급</td>
-				<td colspan="2" class="ebasesal"><fmt:formatNumber value="${elist.ebasesal}" pattern="#,###" />원</td>
+				<td colspan="2" class="sbasesal"><fmt:formatNumber value="${slist.sbasesal}" pattern="#,###" />원</td>
 			</tr>
 			<tr>
 				<td colspan="2">식대</td>
-				<td colspan="2" class="eeat"><fmt:formatNumber value="${elist.eeat}" pattern="#,###" />원</td>
+				<td colspan="2" class="seat"><fmt:formatNumber value="${slist.seat}" pattern="#,###" />원</td>
 			</tr>
 			<tr>
 				<td colspan="2"></td>
@@ -117,7 +120,7 @@ function printPage(){
 			</tr>
 			<tr>
 				<td colspan="2">합계</td>
-				<td class="esalary"><fmt:formatNumber value="${elist.esalary}" pattern="#,###" />원</td>
+				<td class="ssalary"><fmt:formatNumber value="${slist.ssalary}" pattern="#,###" />원</td>
 			</tr>
 		</table>
 
@@ -173,7 +176,7 @@ function printPage(){
 			</tr>
 			<tr>
 				<td colspan="2">지급총액</td>
-				<td colspan="2" class="esalary"><fmt:formatNumber value="${elist.esalary}" pattern="#,###" />원</td>
+				<td colspan="2" class="ssalary"><fmt:formatNumber value="${slist.ssalary}" pattern="#,###" />원</td>
 			</tr>
 			<tr>
 				<td colspan="2">공제총액</td>
@@ -213,5 +216,7 @@ function printPage(){
 			</tr>
 		</table>
 	</div>
+	</div>
+	
 </body>
 </html>

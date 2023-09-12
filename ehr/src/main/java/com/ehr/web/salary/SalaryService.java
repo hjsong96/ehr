@@ -27,5 +27,9 @@ public class SalaryService {
 	public Map<String, Object> searchSal2(Map<String, Object> map) {
 		return salaryDAO.searchSal2(map);
 	}
+
+	public List<Map<String, Object>> list(Map<String, Object> map) {
+		return salaryDAO.list(map);
+	}
 	
 }

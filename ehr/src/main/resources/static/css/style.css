@@ -159,7 +159,7 @@ select {
 }
 
 .modal-header {
-  height: 30px;
+  height: 40px;
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -186,7 +186,7 @@ select {
   position: relative;
   flex: 1 1 auto;
   padding: var(--bs-modal-padding);
-  height: 500px;
+  height: 880px;
   font-family: 'Nanum Gothic Coding', monospace;
   font-size: large;
 }
@@ -353,14 +353,121 @@ select {
 }
 
 .print{
-	float: left;
+  margin: 10px 10px;
+  width: 50px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
+@media print{
+	
+	.modal body{
+	background-color: #dfe3e7 !important; 
+        -webkit-print-color-adjust:exact;
+	}
+	
+	.example{
+	display: none;
+	}
+
+	.middle{
+		display: none;
+	}
+	
+	.eno{
+		display: none;
+	}
+	
+	.print{
+		display: none;
+	}
+	
+	.submit{
+		display: none;
+	}
+}
+
+
 .detail-head{
-	margin: 3px 0px;
+	margin-top: 15px;
 	font-weight: bold;
 	font-size: 14px;
 }
+
+.submit{
+  margin: 10px 185px;
+  	font-size: 14px;
+  width: 100px;
+  height: 30px;
+    font-weight: bold;
+  
+}
+
+label {
+  font-size: 13px;
+  line-height: 2rem;
+  padding: 0.2em 0.4em;
+}
+
+[type="radio"], span {
+  vertical-align: middle;
+}
+
+[type="radio"] {
+  appearance: none;
+  border: max(2px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1.25em;
+  height: 1.25em;
+  transition: border 0.5s ease-in-out;
+}
+
+[type="radio"]:checked {
+  border: 0.4em solid tomato;
+}
+
+[type="radio"]:focus-visible {
+  outline-offset: max(2px, 0.1em);
+  outline: max(2px, 0.1em) dotted tomato;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+  cursor: pointer;
+}
+
+[type="radio"]:hover + span {
+  cursor: pointer;
+}
+
+[type="radio"]:disabled {
+  background-color: lightgray;
+  box-shadow: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[type="radio"]:disabled + span {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Global CSS */
+fieldset {
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 
 .detail-name{
  	margin-bottom: 25px;
@@ -370,9 +477,19 @@ select {
 
 .detail-content{
 	font-size: 12px;
-	margin: 15px 0px;
-	
+	margin: 5px 0px;
 }
+
+.company{
+	float: left;
+	margin-top: 18px;
+}
+
+.employee{
+	float: right;
+	margin-top: 18px;
+}
+
 
 .salary{
 	width: 400px;
@@ -381,3 +498,8 @@ select {
 	margin-left:auto; 
   margin-right:auto;
 }
+
+.modal-body{
+	overflow-y: scroll;
+}
+

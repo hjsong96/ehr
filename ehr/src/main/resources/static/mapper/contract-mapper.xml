@@ -21,6 +21,12 @@
 		WHERE cno=#{acno2};
 	</update>
 	
+	<select id="slist" parameterType="Map" resultType="Map">
+		SELECT * 
+		FROM salary
+		WHERE eno=#{eno} AND scstrdate=#{cstrdate} AND scenddate=#{cenddate} ORDER BY sdate LIMIT 1;
+	</select>
+
 	
 	
 </mapper>

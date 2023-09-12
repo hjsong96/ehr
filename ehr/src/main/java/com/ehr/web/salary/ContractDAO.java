@@ -14,4 +14,6 @@ public interface ContractDAO {
 	Map<String, Object> clist2(Map<String, Object> map);
 
 	int aggrCheck(Map<String, Object> map);
+
+	Map<String, Object> slist(Map<String, Object> map);
 }

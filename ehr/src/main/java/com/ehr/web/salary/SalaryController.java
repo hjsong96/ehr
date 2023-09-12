@@ -2,6 +2,7 @@ package com.ehr.web.salary;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
@@ -72,5 +73,15 @@ public class SalaryController {
 
 		return json.toString();
 	}
-
+	
+	@GetMapping("salary2")
+	public String salary2(@RequestParam Map<String, Object> map, Model model) {
+		
+		System.out.println(map);
+		List<Map<String, Object>> list = salaryService.list(map);
+		model.addAttribute("list", list);
+		System.out.println(list);
+		
+		return "/salary2";
+	}
 }

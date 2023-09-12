@@ -48,9 +48,14 @@ public class ContractController {
 		model.addAttribute("clist2", clist2);
 		//System.out.println(clist2);
 		
+		Map<String, Object> slist = contractService.slist(map);
+		model.addAttribute("slist", slist);
 		JSONObject json = new JSONObject();
 		json.put("elist", elist);
 		json.put("clist2", clist2);
+		json.put("slist", slist);
+		System.out.println(map);
+		System.out.println("slist:" +  slist);
 
 		return json.toString();
 	}
