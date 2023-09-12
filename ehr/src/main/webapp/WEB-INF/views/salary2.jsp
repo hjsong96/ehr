@@ -11,7 +11,6 @@
 <link href="./resources/css/menu.css" rel="stylesheet" />
 <script src="./js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
-	
 </script>
 </head>
 <body>
@@ -19,11 +18,11 @@
 	<div class="total-content">
 		<h1>관리자-급여목록</h1>
 		<div class="top-area">
-			<form action="">
+			<form action="./salary2" method="get">
 				<ul>
-					<li>조회기간<input type="month"> ~ <input type="month"></li>
-					<li>소속<input></li>
-					<li>직급 <select>
+					<li>조회기간<input type="month" name="scstrdate" > ~ <input type="month" name="scenddate"></li>
+					<li>소속<input name="edept"></li>
+					<li>직급 <select name="egrade">
 							<option value="0">사원</option>
 							<option value="1">주임</option>
 							<option value="2">대리</option>
@@ -33,19 +32,19 @@
 							<option value="6">사장</option>
 					</select>
 					</li>
-					<li>사번<input></li>
-					<li>성명<input></li>
-					<li>재직상태 <select>
+					<li>사번<input name="eid"></li>
+					<li>성명<input name="ename" class="ename"></li>
+					<li>재직상태 <select name="estate">
 							<option value="0">재직</option>
 							<option value="1">퇴사</option>
 					</select>
 					</li>
 				</ul>
-				<button>조회</button>
+				<button class="search">조회</button>
 			</form>
 			<div class="middle-area">
 				<div class="buttonText-area">
-					<div class="textA">연봉관리</div>
+					<div class="textA">급여관리</div>
 					<div class="buttonA">
 						<button>입력</button>
 						<button>저장</button>
@@ -60,6 +59,7 @@
 								<td>부서</td>
 								<td>직급</td>
 								<td>재직상태</td>
+								<td>급여일자</td>
 								<td>기본급</td>
 								<td>변동급</td>
 								<td>월단위총액</td>
@@ -69,24 +69,24 @@
 							</tr>
 							<c:forEach items="${list }" var="row">
 								<tr>
-								<td>${row.sno }</td>
-								<td></td>
-								<td>${row.eno }</td>
+								<td class="sno">${row.sno }</td>
+								<td>${row.sdel }</td>
+								<td>${row.eid }</td>
 								<td>${row.ename }</td>
 								<td>${row.edept }</td>
 								<td>${row.egrade }</td>
 								<td>${row.estate }</td>
-								<td>${row.sbasesal }</td>
-								<td>${row.seat }</td>
-								<td>${row.ssalary }</td>
-								<td>${row.sannualsal }</td>
+								<td>${row.sdate }</td>
+								<td><fmt:formatNumber value="${row.sbasesal }" pattern="#,###" />원</td>
+								<td><fmt:formatNumber value="${row.seat }" pattern="#,###" />원</td>
+								<td><fmt:formatNumber value="${row.ssalary }" pattern="#,###" />원</td>
+								<td><fmt:formatNumber value="${row.sannualsal }" pattern="#,###" />원</td>
 								<td>${row.scstrdate }</td>
 								<td>${row.scenddate }</td>
 								</tr>
 							</c:forEach>
 						</table>
 					</div>
-
 
 
 				</div>

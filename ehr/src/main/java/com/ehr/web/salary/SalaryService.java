@@ -31,5 +31,10 @@ public class SalaryService {
 	public List<Map<String, Object>> list(Map<String, Object> map) {
 		return salaryDAO.list(map);
 	}
+
+	public List<Map<String, Object>> sallist(Map<String, Object> map) {
+		System.out.println(map);
+		return salaryDAO.sallist(map);
+	}
 	
 }

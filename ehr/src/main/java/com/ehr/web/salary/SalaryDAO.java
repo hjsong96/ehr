@@ -17,5 +17,7 @@ public interface SalaryDAO {
 	Map<String, Object> searchSal2(Map<String, Object> map);
 
 	List<Map<String, Object>> list(Map<String, Object> map);
+
+	List<Map<String, Object>> sallist(Map<String, Object> map);
 	
 }

@@ -80,8 +80,9 @@ public class SalaryController {
 		System.out.println(map);
 		List<Map<String, Object>> list = salaryService.list(map);
 		model.addAttribute("list", list);
-		System.out.println(list);
+		//System.out.println(list);
 		
 		return "/salary2";
 	}
+	
 }

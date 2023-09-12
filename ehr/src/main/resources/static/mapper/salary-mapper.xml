@@ -21,8 +21,16 @@
 	</select>
 	
 	<select id="list" parameterType="Map" resultType="Map">
-		SELECT * FROM salary s JOIN employee e ON e.eno=s.eno WHERE s.eno=#{eno};
+		SELECT * FROM adsalary
+		<where>
+			<if test="scstrdate != null">AND scstrdate LIKE CONCAT('%', #{scstrdate}, '%') </if>
+			<if test="scenddate != null">AND scenddate LIKE CONCAT('%', #{scenddate}, '%') </if>
+			<if test="edept != null">AND edept LIKE CONCAT('%', #{edept}, '%') </if>
+			<if test="egrade != null">AND egrade LIKE CONCAT('%', #{egrade}, '%') </if>
+			<if test="estate != null">AND estate LIKE CONCAT('%', #{estate}, '%') </if>
+			<if test="eid != null">AND eid LIKE CONCAT('%', #{eid}, '%') </if>
+			<if test="ename != null">AND ename LIKE CONCAT('%', #{ename}, '%') </if>
+		</where>
 	</select>
-	
 	
 </mapper>

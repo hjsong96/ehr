@@ -74,4 +74,11 @@ public class ContractController {
 		
 		return "redirect:/contract?eno=" + eno;
 	}
+	
+	@GetMapping("/contrack2")
+	public String contract2(@RequestParam Map<String, Object> map, Model model) {
+		
+		return "/contract2";
+	}
+	
 }
