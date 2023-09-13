@@ -22,8 +22,6 @@ $(function() {
 		$(".search").click(function() {
 			let eno = $(".eno").val();
 			let sdate = $("input[name='sdate']").val();
-	        alert("eno: " + eno);
-	        alert("sdate: " + sdate);
 	       
 	 		$.ajax({
 	 			url: "./searchSal",
@@ -31,15 +29,25 @@ $(function() {
 	 			data: {"eno" : eno, "sdate" : sdate}, 
 	 			dataType: "json",
 	 			success: function(data){
-	 				alert(data)
-	 				
-	 				if(sdate !== sdate) {
-	 					alert("!")
+	 				if(data.slist.sdate == null) {
+						alert("급여가 지급되지 않았습니다. 다시 조회해주세요.");
+		                $(".sbasesal").text('');
+		                $(".seat").text('');
+		                $(".ssalary").text('');
+		                $(".snation").text('');
+		                $(".shealth").text('');
+		                $(".scare").text('');
+		                $(".shire").text('');
+		                $(".stake").text('');
+		                $(".ssalary").text('');
+		                $(".stake").text('');
+		                $(".sreal").text('');
+						return false;
 	 				}
-	 				
 	 				function formatNumber(number) {
                     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
+	 				
 	                $(".sbasesal").text(formatNumber(data.slist.sbasesal) + '원');
 	                $(".seat").text(formatNumber(data.slist.seat) + '원');
 	                $(".ssalary").text(formatNumber(data.slist.ssalary) + '원');
@@ -52,6 +60,8 @@ $(function() {
 	                $(".stake").text(formatNumber(data.slist.stake) + '원');
 	                $(".sreal").text(formatNumber(data.slist.sreal) + '원')
 	 			},
+	 			
+	 			
 	 			error:function(error){
 	 				alert("에러가 발생했습니다.");}
 	 		});

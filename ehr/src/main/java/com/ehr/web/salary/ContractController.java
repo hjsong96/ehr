@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.mail.EmailException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,10 +76,22 @@ public class ContractController {
 		return "redirect:/contract?eno=" + eno;
 	}
 	
-	@GetMapping("/contrack2")
+	@GetMapping("/contract2")
 	public String contract2(@RequestParam Map<String, Object> map, Model model) {
 		
+		List<Map<String, Object>> adclist = contractService.adclist(map);
+		model.addAttribute("adclist", adclist);
+		
 		return "/contract2";
+	}
+	
+	@PostMapping("/mail")
+	public String mail(@RequestParam Map<String, Object> map) throws EmailException {
+		System.out.println(map);
+		
+		util.htmlMailSender(map);
+
+		return "redirect:/contract2";
 	}
 	
 }

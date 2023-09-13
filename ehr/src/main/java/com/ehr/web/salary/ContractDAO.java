@@ -16,4 +16,6 @@ public interface ContractDAO {
 	int aggrCheck(Map<String, Object> map);
 
 	Map<String, Object> slist(Map<String, Object> map);
+
+	List<Map<String, Object>> adclist(Map<String, Object> map);
 }

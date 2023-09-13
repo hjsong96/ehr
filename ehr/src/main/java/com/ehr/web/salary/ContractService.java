@@ -32,5 +32,9 @@ public class ContractService {
 		return contractDAO.slist(map);
 	}
 
+	public List<Map<String, Object>> adclist(Map<String, Object> map) {
+		return contractDAO.adclist(map);
+	}
+
 
 }

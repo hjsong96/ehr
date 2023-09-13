@@ -60,7 +60,7 @@
 						$(".cenddate2").text(cenddate);
 						$(".eaddr").text(data.elist.eaddr);
 						$(".errn").text(data.elist.errn);
-
+						
 						let button = $("<button></button>");
 						button.text("제출하기");
 						button.attr("type", "submit");
