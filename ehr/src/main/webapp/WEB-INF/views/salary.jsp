@@ -11,6 +11,7 @@
 <link href="./resources/css/menu.css" rel="stylesheet" />
 <script src="./js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
+
 window.onload = function() {
 	today = new Date();
 	today = today.toISOString().slice(0, 7);
@@ -71,8 +72,6 @@ $(function() {
 function printPage(){
     window.print();
 }
-	
-	
 </script>
 </head>
 <body>
@@ -80,7 +79,7 @@ function printPage(){
 	<div class="total-content">
 	<h1>salary</h1>
 		<form action="./salary" method="get">
-			<input name="eno" class="eno" value="${sessionScope.eno}"> 
+			<input type="hidden" name="eno" class="eno" value="${sessionScope.eno}"> 
 			<input name="sdate" id="sdate" type="month"> 
 		</form>
 		<button class="search">조회</button>

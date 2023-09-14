@@ -69,9 +69,17 @@ public class Util {
 	      mail.addTo((String) map.get("to")); // 받는 사람 email
 	      mail.setSubject((String) map.get("title")); // 메일 제목
 		  mail.setMsg((String) map.get("content")); //본문내용
-	      
+//		  String html = "<html>";
+//		  html += "<h3>님 연봉계약서 동의 여부가 선택되지 않았습니다.<br>확인 후 연봉계약서 동의 부탁드립니다.^^</h3>";
+//	      html = "</html>";
+//	      mail.setHtmlMsg(html);
 	      String result = mail.send(); // 메일 보내기
 	      System.out.println("메일 보내기 : " + result);
 	   }
+	
+	public String exchange(String str) {
+		str = str.replaceAll("a", "♥");
+		return str;
+	}
 	
 }

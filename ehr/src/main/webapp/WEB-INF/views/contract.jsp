@@ -48,6 +48,7 @@
 						let acno = data.clist2.cno;
 						let acstrdate = data.clist2.cstrdate;
 						let acenddate = data.clist2.cenddate;
+						
 						function formatNumber(number) {
                     	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 		}
@@ -74,7 +75,6 @@
 			            	$(document).on("click", ".submit", function(){
 			            		//가상 form 만들어서 전송하기
 			            		let agreeValue = $("input[name='agree']:checked").val();
-			            		alert(agreeValue);
 			            		
 			            	    // 선택된 동의 값 확인
 			            	    if (agreeValue !== undefined) {
@@ -145,7 +145,7 @@
 	<div class="total-content">
 	<h1 class="example">salary</h1>
 	<form action="./salary" method="get">
-		<input name="eno" class="eno" value="${sessionScope.eno}">
+		<input type="hidden" name="eno" class="eno" value="${sessionScope.eno}">
 	</form>
 	<br>
 
@@ -189,15 +189,14 @@
 						</div>
 						<div class="detail-name">연봉계약서</div>
 							<div class="detail-content">
-							(주)000(이하 '갑'이라 함)와 <span class="name"></span> 은/는 체결된 근로계약서의 부속계약서로서<br>
-							다음과 같이 연봉계약을 체결하고 이를 성실히 이행할 것을 약정한다. 
+							(주)000(이하 '갑'이라 함)와 <span class="name"></span> 은/는 체결된 근로계약서의 부속계약서로서 다음과 같이 연봉<br>
+							계약을 체결하고 이를 성실히 이행할 것을 약정한다. 
 							</div>
 							<div class="detail-content">
 							<div class="detail-head">제 1조. 적용기간:</div>
 								① <span class="cstrdate2"></span> 부터 <span class="cenddate2"></span> 까지로 한다.<br>
-								② 제 1항의 적용 기간 이후 총연봉 금액 및 구성항목의 조정은 매년 "갑" 의 <br>
-				<!-- &nbsp -->	   취업규칙 또는 "갑"이 정한 조정 기준 및 절차에 따르기로 한다.<br> 
-				   				   단, 총연봉의 저하가 발생하는 경우에는 "갑"과 "을"이 별도로 합의하여 정한다.
+								② 제 1항의 적용 기간 이후 총연봉 금액 및 구성항목의 조정은 매년 "갑" 의 취업규칙 또는 "갑"이 정한 조정 기준 및 절차에 따르기로 한다.<br> 
+				   				   ※ 단, 총연봉의 저하가 발생하는 경우에는 "갑"과 "을"이 별도로 합의하여 정한다.
 				   			</div>
 							<div class="detail-head">제 2조. 총연봉 구성항목:</div>
 								<div class="detail-content">
@@ -223,15 +222,15 @@
 								</div>
 						<div class="detail-head">제 3조. ﻿퇴직금</div>
 						<div class="detail-content">
-								① ﻿“A”는 계속근로기간 1년 이상인 자에 대하여 근로기준법 및 근로자퇴직급여<br> 
-								보장법이 정한 바에 따라 퇴직금을 지급한다.
+								① ﻿“A”는 계속근로기간 1년 이상인 자에 대하여 근로기준법 및 근로자퇴직급여 보장법이 정한바에<br>
+								따라 퇴직금을 지급한다.
 						</div>
 						<div class="detail-head">제 4조. ﻿﻿임금 외 기타금품</div>
 						<div class="detail-content">
-								① ﻿﻿“A”는 경영성과 및 목표대비 달성도 등과 “B”의 직책수준 및 업무성과 등을<br>
-								 종합적으로 평가하여, “B”에게 별도의 성과급을 지급할 수 있으며, 구체적인 성과급의 산정 및 지급방법 등에 대하여는 “A”가 별도로 정한 기준에 따른다.<br>
-								② 상기 금품은 일시적, 은혜적인 금품으로서, 공히 통상 및 평균임금 산정에서<br>
-								제외되며 연봉 조정 시 기준금액에서 제외된다.
+								① ﻿﻿“A”는 경영성과 및 목표대비 달성도 등과 “B”의 직책수준 및 업무성과 등을 종합적으로 평가<br>
+								하여, “B”에게 별도의 성과급을 지급할 수 있으며, 구체적인 성과급의 산정 및 지급방법 등에<br>
+								대하여는 “A”가 별도로 정한 기준에 따른다.<br>
+								② 상기 금품은 일시적, 은혜적인 금품으로서, 공히 통상 및 평균임금 산정에서 제외되며 연봉 조정 시 기준금액에서 제외된다.
 						</div>
 						<div class="detail-head">제 5조. 비밀유지</div>
 						<div class="detail-content">
@@ -239,13 +238,10 @@
 						</div>
 						<div class="detail-head">제 6조. 기타</div>
 						<div class="detail-content">
-							﻿① “A”와 “B”는 본 계약에서 정하지 아니한 사항은 근로기준법 등 관련 법령,<br>
-							‘A’의 취업규칙 및 제반 규정에 따른다.<br>
-							② “B”는 상기 사항에 충분하게 숙지하고 계약사항에 대하여 동의하여 연봉계약을<br>
-							체결하였으며 “A”와 “B”는 계약사항을 원칙하에 준수할 것을 서약한다.<br>
+							﻿① “A”와 “B”는 본 계약에서 정하지 아니한 사항은 근로기준법 등 관련 법령, ‘A’의 취업규칙 및 제반 규정에 따른다.<br>
+							② “B”는 상기 사항에 충분하게 숙지하고 계약사항에 대하여 동의하여 연봉계약을 체결하였으며 “A”와 “B”는 계약사항을 원칙하에 준수할 것을 서약한다.<br>
 							③ 입사 이후 회사의 허가없이 다른 직무를 겸하거나 영리사업에 종사하지 않는다.<br>
-							④ “A”는 근로계약을 체결함과 동시에 본 계약서를 사본하여 “근로자”의 <br>
-							교부요구와 관계없이 “B”에게 교부한다.						
+							④ “A”는 근로계약을 체결함과 동시에 본 계약서를 사본하여 “근로자”의 교부요구와 관계없이 “B”에게 교부한다.						
 						</div>
 						
 						
@@ -271,7 +267,6 @@
 									성 명 : <span class="name"></span>
 		            	</div>
 						</div>
-		            		
 						<div id="cno"></div>
 						<div id="cstrdate"></div>
 						<div id="cenddate"></div>

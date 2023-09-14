@@ -32,8 +32,6 @@
 							let edept = $(this).find(".edept").text();
 							let eemail = $(this).find(".eemail").text();
 
-							alert(ename);
-
 							let text = edept
 									+ " "
 									+ ename
@@ -63,9 +61,11 @@
 							<option value="1">주임</option>
 							<option value="2">대리</option>
 							<option value="3">과장</option>
-							<option value="4">부장</option>
-							<option value="5">부사장</option>
-							<option value="6">사장</option>
+							<option value="4">차장</option>
+							<option value="5">부장</option>
+							<option value="6">부사장</option>
+							<option value="7">사장</option>
+							<option value="8">관리자</option>
 					</select>
 					</li>
 					<li>사번<input name="eid"></li>
@@ -82,6 +82,7 @@
 					</li>
 				</ul>
 				<button class="search">조회</button>
+				<input type="hidden" name="eno" value="${sessionScope.eno}">
 			</form>
 		</div>
 		<div class="middle">

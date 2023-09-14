@@ -6,17 +6,9 @@
          <div class="menu-item" onclick="url('./main')"><i class="xi-paper-o xi-2x"></i><br>급여관리</div>
          <div class="menu-item" onclick="url('')"><i class="xi-user-o xi-2x"></i><br>근태관리</div>
          <div class="menu-item" onclick="url('')"><i class="xi-bell-o xi-2x"></i><br>공지사항</div>
-         <div class="menu-item logout" ><i class="xi-flag-o xi-2x"></i><br>로그아웃</div>
+         <div class="menu-item logout" onclick="url('./logout')"><i class="xi-flag-o xi-2x"></i><br>로그아웃</div>
       </div>
       <script>function url(url){location.href="./"+url;}</script>
       <script type="text/javascript">
- $(function(){
-   $(".logout").click(function(){
-      if(confirm("로그아웃 하시겠습니까?")){
-         alert("로그아웃 되었습니다. 다시 로그인해주세요.");
-         location.href='logout';
-      }
-   }); 
- });
 
  </script>

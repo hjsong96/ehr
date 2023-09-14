@@ -224,7 +224,7 @@ select {
 @media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    --bs-modal-width: 500px;
+    --bs-modal-width: 600px;
   }
 }
 @media (min-width: 1200px) {
@@ -396,10 +396,10 @@ select {
 }
 
 .submit{
-  margin: 10px 185px;
+  	margin: 14px 229px;
   	font-size: 14px;
-  width: 100px;
-  height: 30px;
+  	width: 100px;
+  	height: 30px;
     font-weight: bold;
   
 }
@@ -497,9 +497,5 @@ fieldset {
 	text-align: center;
 	margin-left:auto; 
   margin-right:auto;
-}
-
-.modal-body{
-	overflow-y: scroll;
 }
 

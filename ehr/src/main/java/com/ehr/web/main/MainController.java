@@ -106,6 +106,13 @@ public String loginCheck(@RequestParam Map<String, Object> map, HttpSession sess
 	}
 }
 
+@GetMapping("/logout")
+public String logout(HttpSession session) {
+	session.invalidate();
+	
+	return "/login";
+}
+
 
 
 @GetMapping("/join")
